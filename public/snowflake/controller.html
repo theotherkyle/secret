@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+    <script src="/js/components/socket.io.js"></script>
+  
+    
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
+    
+<script> 
+  
+   var socket = io();
+  //https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas
+  
+  $(document).ready(function() { 
+    
+      $('#changeBefore').click(function(){
+      socket.emit('control-message', "start-show");
+      
+      
+   //     $('body').append(add);
+     // draw(this,100,100);
+    //  html2canvas(document.body).then(function(canvas) {
+    //document.body.appendChild(canvas);
+
+      
+        //$('#mainvideoContainer').text("Background Color Changed!"); 
+    });
+  
+  
+    //
+   // var newValue = '#fb0094';//coming from somewhere background: ; 
+   // var add = '<style>.App-main:before, .App-main:after {background:'+newValue+';} </style>';
+    $('#changeVideo').click(function(){
+      
+      socket.emit('control-message', "initBunnyVideo");
+        //$('#mainvideoContainer').text("Background Color Changed!"); 
+    });
+      $('#changeVideoToCamera').click(function(){
+        
+      socket.emit('control-message', "switchBunnyVideo");
+        //$('#mainvideoContainer').text("Background Color Changed!"); 
+    });
+  });
+    </script>
+    
+  </head>
+  <body>
+    
+  <button id="changeBefore">Start Show</button>
+  <button id="changeVideo">Stream Video</button> 
+  <button id="changeVideoToCamera">Switch to Camera</button> 
+  
+  </body>
+</html>

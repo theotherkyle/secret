@@ -1,0 +1,162 @@
+/* global OT */
+
+
+
+//const getCanvasStream = () => {
+var videoObject = function VideoObject() {
+  
+function handleError(error) {
+  if (error) {
+    console.error(error);
+  }
+}
+
+
+// Sample code inspired from @aullman (https://github.com/aullman)
+const closeToGreen = (r, g, b) => {
+  // 86, 246, 61
+  if (g > (b * 1.4) && g > (r * 1.4)) {
+    return true;
+  }
+  return false;
+};
+  
+  let canvas;
+  
+  let ctx;
+
+  let cameraVideo;
+  let filterVideo;
+  let stopped = false;
+  let filterCtx;
+  let filterCanvas;
+  let cameraCtx;
+  let cameraCanvas;
+  let videoElement;
+
+  const drawFrame = () => {
+    //cameraCtx.drawImage(videoElement, 0, 0, cameraCanvas.width, cameraCanvas.height);
+    filterCtx.drawImage(filterVideo, 0, 0, filterCanvas.width, filterCanvas.height);
+
+    const cameraData = cameraCtx.getImageData(0, 0, cameraCanvas.width, cameraCanvas.height);
+    const filterData = filterCtx.getImageData(0, 0, filterCanvas.width, filterCanvas.height);
+  /*  const res = new Uint8ClampedArray(cameraData.data.length);
+   for (let i = 0; i < cameraData.data.length; i += 4) {
+      let imgData = filterData;
+      //if (!closeToGreen(filterData.data[i], filterData.data[i+1], filterData.data[i+2])) 
+      {
+        imgData = filterData;
+      }
+      res[i] = imgData.data[i];
+      res[i + 1] = imgData.data[i + 1];
+      res[i + 2] = imgData.data[i + 2];
+      res[i + 3] = imgData.data[i + 3];
+    }
+    */
+    ctx.putImageData(filterData, 0,0);//new ImageData(res, cameraData.width, cameraData.height), 0, 0);
+    if (!stopped) {
+      requestAnimationFrame(drawFrame);
+    } else {
+      ctx = null;
+    }
+  };
+
+  
+
+this. initVideo = function() { 
+  
+    
+  
+publishVideo(); 
+  // Get the Camera video
+  OT.getUserMedia({
+    audioSource: null
+  }).then((stream) => {
+    videoElement = document.createElement('video');
+    videoElement.srcObject = stream;
+    
+    videoElement.crossorigin="anonymous"
+    videoElement.crossOrigin="anonymous"
+    videoElement.setAttribute('crossOrigin', 'anonymous')
+    videoElement.play();
+    cameraCanvas = document.createElement('canvas');
+    cameraCanvas.width = videoElement.width = 640;
+    cameraCanvas.height = videoElement.height = 480;
+    cameraCtx = cameraCanvas.getContext('2d');
+
+    requestAnimationFrame(drawFrame);
+  });
+
+  // Get the filter video
+  filterVideo = document.createElement('video');
+  filterVideo.setAttribute('loop', true);
+  filterCanvas = document.createElement('canvas');
+ // filterVideo.src = 'https://cdn.glitch.com/3449a598-1d95-42c8-a411-c9c72d4fadf2%2Fsnowflake-greenscreen.mp4?v=1616521007648'; // We do not own the rights to this video
+  filterVideo.src = 'https://cdn.glitch.com/3449a598-1d95-42c8-a411-c9c72d4fadf2%2FBigBuckBunny_320x180.mp4?v=1616456553269'
+    filterVideo.crossorigin="anonymous"
+    filterVideo.crossOrigin="anonymous"
+    filterVideo.setAttribute('crossOrigin', 'anonymous')
+  
+  filterCanvas.width = filterVideo.width = 640;
+  filterCanvas.height = filterVideo.height = 480;
+  filterVideo.play();
+  filterCtx = filterCanvas.getContext('2d');
+
+  return {
+    canvas,
+    stop: () => {
+      stopped = true;
+    }
+  };
+};
+  var session ;
+  
+  const apiKey = '47165324';
+const sessionId = '1_MX40NzE2NTMyNH5-MTYxNjA5MjI2Mzk5Nn5PYjBvYjFDNk9UdVh2MVpjbDVjb1VHU2J-fg';
+const token = 'T1==cGFydG5lcl9pZD00NzE2NTMyNCZzaWc9NTc0Mjc5MGVkNDk3ZGYwZjBhNjQ5YjFiNTBiMGFjZWQ4MDdjMTYwOTpzZXNzaW9uX2lkPTFfTVg0ME56RTJOVE15Tkg1LU1UWXhOakE1TWpJMk16azVObjVQWWpCdllqRkROazlVZFZoMk1WcGpiRFZqYjFWSFUySi1mZyZjcmVhdGVfdGltZT0xNjE2MDkyMjk3Jm5vbmNlPTAuOTAzMTY2ODcwNTE0NjEzOSZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNjE4Njg0Mjk1JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9';
+
+  const publishVideo = function () {
+    
+    
+const publisher = OT.initPublisher('publisher', { name : 'host', 
+  videoSource: canvas.captureStream(30).getVideoTracks()[0],
+});
+
+session.on({
+ streamCreated: event => {
+   session.subscribe(event.stream);
+ },
+ sessionConnected: event => {
+   session.publish(publisher);
+ },
+});
+
+session.connect(token, (error) => {
+ if (error) {
+   console.log(`There was an error connecting to the session ${error.message}`);
+ }
+});
+
+    
+  }
+  const init = function() {
+
+  canvas = document.createElement('canvas');
+  ctx = canvas.getContext('2d');
+  canvas.width = 640;
+  canvas.height = 480;
+  
+
+ session = OT.initSession(apiKey, sessionId);
+  
+
+
+
+};
+
+document.addEventListener('DOMContentLoaded', init());
+};
+
+
+
+var appcore = new videoObject();

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>OT Accelerator Core</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://assets.tokbox.com/solutions/css/style.css">
+    <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.2/livestamp.min.js"></script>
+    <script src="js/components/opentok-solutions-logging.js"></script>
+    <script src="js/components/opentok-text-chat.js"></script>
+    <script src="js/components/opentok-screen-sharing.js"></script>
+    <script src="js/components/opentok-annotation.js"></script>
+    <script src="js/components/opentok-archiving.js"></script>
+    <script src="js/components/opentok-acc-core.js"></script>
+    <script src="js/app.js"></script>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
+<script src="js/html2canvas.min.js"></script> 
+</head>
+  
+<script> 
+  
+  
+  /*
+document.addEventListener('DOMContentLoaded', function(){
+	var v = document.getElementById('videoContainer');
+	var canvas = document.getElementById('canvasContainer');
+	var context = canvas.getContext('2d');
+ 
+	var cw = Math.floor(canvas.clientWidth / 100);
+	var ch = Math.floor(canvas.clientHeight / 100);
+	canvas.width = cw;
+	canvas.height = ch;
+ 
+	v.addEventListener('play', function(){
+		draw(this,context,cw,ch);
+	},false);
+ 
+},false);
+ 
+ */ 
+  
+function draw(c,w,h) {
+	 //if(v.paused || v.ended)	return false;
+	//c.drawImage(v,0,0,w,h);
+ // background =     
+// .App-main:before, .App-main:after 
+  
+  
+  
+      this.video = document.getElementById('OT_video-element');
+  
+      this.c1 = document.getElementById("c1");
+      this.ctx1 = this.c1.getContext("2d");
+      this.c2 = document.getElementById("c2");
+      this.ctx2 = this.c2.getContext("2d");
+  
+  this.ctx1.drawImage(this.video, 0, 0, 100, 100);
+    var imageData = this.ctx1.getImageData(canvasX, canvasY, 1, 1);
+    var pixel = imageData.data;
+     // let frame = this.ctx1.getImageData(0, 0, 100, 100);
+       //   let l = frame.data.length / 4;
+  
+
+  
+  var newValue = '#fb0094';//coming from somewhere background: ; 
+    var add = '<style>.App-main:before, .App-main:after {background:'+newValue+';} </style>';
+  
+  
+ //$('body').append(add);
+      
+      
+      /*this.ctx1.drawImage(this.video, 0, 0, this.width, this.height);
+      let frame = this.ctx1.getImageData(0, 0, this.width, this.height);
+          let l = frame.data.length / 4;
+  
+      for (let i = 0; i < l; i++) {
+        let r = frame.data[i * 4 + 0];
+        let g = frame.data[i * 4 + 1];
+        let b = frame.data[i * 4 + 2];
+        if (g > 100 && r > 100 && b < 43)
+          frame.data[i * 4 + 3] = 0;
+      }
+      this.ctx2.putImageData(frame, 0, 0);
+      return;
+    
+    }
+    */
+  
+                //$('#mainvideoContainer').css('background', '#ccc'); 
+                //$('#mainvideoContainer').css('background', '#ccc'); 
+                //$('#mainvideoContainer').text("Background Color Changed!"); 
+  
+	setTimeout(draw,20,c,w,h);
+  
+  
+  
+  
+  
+  
+}
+  //https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas
+  
+  $(document).ready(function() { 
+    //draw(this,100,100);
+    var newValue = '#fb0094';//coming from somewhere background: ; 
+    var add = '<style>.App-main:before, .App-main:after {background:'+newValue+';} </style>';
+    $('#changeBefore').click(function(){
+      
+      
+        $('body').append(add);
+    //  html2canvas(document.body).then(function(canvas) {
+    //document.body.appendChild(canvas);
+});
+      
+        //$('#mainvideoContainer').text("Background Color Changed!"); 
+    });
+  });
+</script>
+  
+ 
+<style> 
+body {
+	background: black;
+}
+ 
+#c {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+}
+ 
+#v {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -180px 0 0 -240px;
+}
+ 
+p {
+	position: relative;
+	z-index: 1;
+}
+</style> 
+
+
+
+<body>
+  
+    <div>
+      <canvas id="c1" width="160" height="96"></canvas>
+      <canvas id="c2" width="160" height="96"></canvas>
+
+  </div>
+  
+  <button id="changeBefore">Change</button>
+    <div class="App">
+        <div class="App-bg"><img src="https://cdn.glitch.com/3449a598-1d95-42c8-a411-c9c72d4fadf2%2F96-965638_black-brick-wall-background.jpeg?v=1616341353979"/></div>
+      
+        <div class="App-header">
+            <img src="https://cdn.glitch.com/3449a598-1d95-42c8-a411-c9c72d4fadf2%2F290b22ae-70dc-4e5b-8fb5-347446b09d20.image.png?v=1616340591216" class="App-logo" alt="logo" />
+            <h1>Watch</h1>
+        </div>
+        <div class="App-main" id="mainvideoContainer">  
+       <div id="controls" class="App-control-container hidden">
+                <div class="ots-video-control circle audio" id="toggleLocalAudio"></div>
+                <div class="ots-video-control circle video" id="toggleLocalVideo"></div>
+            </div>
+            <div class="App-video-container" id="appVideoContainer">
+                <div class="App-mask" id="connecting-mask">
+                    <progress-spinner dark style="font-size:50px"></progress-spinner>
+                    <div class="message with-spinner">Connecting</div>
+                </div>
+                <div class="App-mask hidden" id="start-mask">
+                    <div class="message button clickable" id="start">Click to Start Call</div>
+                </div>
+                <div id="cameraPublisherContainer" class="video-container hidden"></div>
+                <div id="screenPublisherContainer" class="video-container hidden"></div>
+                <div id="cameraSubscriberContainer" class="video-container-hidden"></div>
+                <div id="screenSubscriberContainer" class="video-container-hidden"></div>
+            </div>
+            <div id="chat" class="App-chat-container"></div>
+      
+      
+      
+      
+      </div>
+    </div>
+  
+</body>
+
+</html>
+
+
+
+ 
