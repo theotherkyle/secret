@@ -1,0 +1,339 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+
+.App-header {/* global AccCore */
+
+
+    background-color: #222;
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.App-header h1 {
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.App-logo {
+    height: 60%;
+    width: auto;
+}
+
+
+.App-bg {
+    position: absolute;
+ 
+    max-width: 100%;
+
+  z-index : -10;
+}
+
+
+.App-bg img {
+ 
+    max-width: 100%;
+
+}
+
+
+
+.App-main-guest-border {
+    position: relative;
+    width: 15vw;
+    height: calc(15vw * .6);
+  display flex;
+    margin: 8px auto;
+  justify-content : center; 
+  align-items: center; 
+  
+	background: linear-gradient(0deg, #000, #272727);
+    border: 1px solid lightblue;
+  
+    border-radius: 6px;
+ 
+}
+
+
+
+
+.App-main-guest {
+    position: relative;
+    width: 15vw;
+    height: calc(15vw * .6);
+  display flex;
+    margin: 8px auto;
+  justify-content : center; 
+  align-items: center; 
+  
+	background: linear-gradient(0deg, #000, #272727);
+    border: 1px solid lightblue;
+  
+    /*border-radius: 6px;*/
+ 
+}
+
+
+
+.App-main {
+    position: relative;
+    width: 75vw;
+    height: calc(75vw * .6);
+  display flex;
+    margin: 10px auto;
+  justify-content : center; 
+  align-items: center; 
+  
+	background: linear-gradient(0deg, #000, #272727);
+    border: 1px solid lightblue;
+ 
+}
+
+
+
+
+
+.App-main:before, .App-main:after {
+	content: '';
+	position: absolute;
+	left: -2px;
+	top: -2px;
+	background: #00ff00; /* linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+		#0000ff, #00ff00,#ffff00, #ff0000); */ 
+  
+  
+	background-size: 400%;
+	width: calc(100% + 4px);
+	height: calc(100% + 4px);
+	z-index: -1;
+	/*animation: steam 200s linear infinite;*/
+}
+
+@keyframes steam {
+	0% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 400% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+ 
+.App-main:after {
+	filter: blur(100px);
+}
+
+
+.App-control-container {
+    position: absolute;
+    height: 100%;
+    width: 60px;
+    left: -60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.App-control-container.hidden {
+    display: none;
+}
+
+.App-control-container .ots-video-control {
+    width: 50px;
+    height: 50px;
+    margin: 20px 0 !important;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-position: center;
+    background-color: rgba(27, 134, 144, 0.4);
+    background-color: lightgrey;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.App-control-container .ots-video-control.audio {
+    background-image: url(https://assets.tokbox.com/solutions/images/icon-mic.png);
+}
+
+.App-control-container .ots-video-control.audio:hover, .App-control-container .ots-video-control.audio.muted {
+    background-image: url(https://assets.tokbox.com/solutions/images/icon-muted-mic.png);
+}
+
+.App-control-container .ots-video-control.video {
+    background-image: url(https://assets.tokbox.com/solutions/images/icon-video.png);
+}
+
+.App-control-container .ots-video-control.video.muted {
+    background-image: url(https://assets.tokbox.com/solutions/images/icon-no-video.png);
+}
+
+.App-video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App-mask {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: white;
+    background: rgba(27, 134, 144, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.App-mask, .guest {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: white;
+    background: rgba(27, 134, 144, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.App-mask.hidden {
+    display: none;
+}
+
+.App-mask .react-spinner {
+    position: absolute;
+}
+
+.App-mask .message {
+    font-weight: 200;
+}
+
+.App-mask .message.with-spinner {
+    position: absolute;
+    top: 57.5%;
+}
+
+.App-mask .message.button {
+    border: 1px solid white;
+    padding: 5px 5px;
+    border-radius: 6px;
+}
+
+
+
+.App-mask .guest .message.button {
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 1px;
+}
+
+.App-video-container .video-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  
+  
+}
+
+.App-video-container .video-container.small {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 160px;
+    height: 96px;
+    border: 1px solid #fcba00;
+    z-index: 2;
+}
+
+.App-video-container .video-container.small.left {
+    left: 20px;
+    border: 1px solid #00fcc2;
+}
+
+.App-video-container .video-container.hidden {
+    display: none;
+}
+
+.App-video-container .video-container.active-2 .OT_subscriber {
+    width: 50%;
+}
+
+.App-video-container .video-container.active-3 .OT_subscriber {
+    width: calc(100%/3) !important;
+}
+
+.App-video-container .video-container.active-4 {
+    flex-wrap: wrap;
+}
+
+.App-video-container .video-container.active-4 .OT_subscriber {
+    width: 50% !important;
+    height: 50% !important;
+}
+
+progress-spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 1px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  -webkit-animation: rotate 800ms linear infinite;
+          animation: rotate 800ms linear infinite;
+}
+progress-spinner[dark] {
+  border-top-color: rgba(255, 255, 255, 0.6);
+}
+progress-spinner[dotted] {
+  border-width: 0;
+  border-style: dotted;
+  border-top-width: 2px;
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
